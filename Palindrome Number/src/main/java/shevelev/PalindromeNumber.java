@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PalindromeNumber {
-    public static boolean isPalindrome(int x) {
+    public static boolean isPalindromeOld(int x) {
         if (x < 0) {
             return false;
         }
@@ -20,14 +20,25 @@ public class PalindromeNumber {
             }
 
         }
-
         return true;
-
-
-
     }
 
-    public static void main(String[] args) {
-        isPalindrome(8695);
+    public static boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        List<Integer> number = new ArrayList<>();
+        while (x > 0) {
+            number.add(x % 10);
+            x = (int) Math.floor(x / 10);
+        }
+        int i = 0;
+        int size = number.size() - 1;
+        while (i < size) {
+            if (number.get(i++) != number.get(size--)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
